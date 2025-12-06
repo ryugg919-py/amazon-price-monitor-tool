@@ -1,0 +1,23 @@
+[project]
+name = "amazon-price-monitor-tool"
+version = "1.0.0"
+description = "Amazon price monitoring tool with USD-first scraping, currency-aware history, FastAPI dashboard, and Slack notifications."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Ryu" }]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+select = ["E", "F", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = "."

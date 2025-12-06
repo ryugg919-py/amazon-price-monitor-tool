@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>amazon-price-monitor-tool / Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <style>
+        body {
+            margin: 20px;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            table-layout: fixed;
+            word-break: break-word;
+        }
+        th, td {
+            padding: 6px 8px;
+        }
+        .sparkline {
+            width: 150px;
+            height: 40px;
+        }
+        .json-link a {
+            font-size: 12px;
+        }
+        .price-up { color: #d9534f; font-weight: bold; }
+        .price-down { color: #5cb85c; font-weight: bold; }
+        .neutral { color: #777; }
+    </style>
+</head>
+<body>
+
+<h2>amazon-price-monitor-tool / Dashboard</h2>
+
+<p>Monitored Products: {{ items|length }} (latest scraping results)</p>
+{% if not has_data %}
+<p style="color:#d9534f;font-weight:bold;">No price data available. Run the scraper or check the database.</p>
+{% endif %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Site</th>
+            <th>Category</th>
+            <th>Product Name</th>
+            <th>Product Code</th>
+            <th>Current Price</th>
+            <th>Currency</th>
+            <th>30-Day Avg</th>
+            <th>Δ (%)</th>
+            <th>Last Updated</th>
+            <th>History (JSON)</th>
+            <th>Trend</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.site_name or item.site }}</td>
+            <td>{{ item.category }}</td>
+
+            <td title="{{ item.product_name }}">
+                {% if item.url %}
+                    <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.product_name }}</a>
+                {% else %}
+                    {{ item.product_name }}
+                {% endif %}
+            </td>
+
+            <td>{{ item.product_code }}</td>
+
+            <td>
+                {% if item.price is not none %}
+                    {{ "{:,}".format(item.price) }}
+                {% else %}
+                    Price unavailable
+                    {% if item.status == "failed" and item.error %}
+                        <br><small>Last check failed (reason: {{ item.error }})</small>
+                    {% elif item.status == "failed" %}
+                        <br><small>Last check failed.</small>
+                    {% endif %}
+                {% endif %}
+            </td>
+
+            <td>{{ item.currency or "—" }}</td>
+
+            <td>
+                {% if item.avg_price is not none %}
+                    {{ "{:,.2f}".format(item.avg_price) }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+
+            <td>
+                {# Use only diff_from_avg_percent provided by backend #}
+                {% set pct = item.diff_from_avg_percent %}
+                {% if pct is not none %}
+                    {% if pct > 0 %}
+                        <span class="price-up">+{{ "%.1f"|format(pct) }}%</span>
+                    {% elif pct < 0 %}
+                        <span class="price-down">{{ "%.1f"|format(pct) }}%</span>
+                    {% else %}
+                        <span class="neutral">0.0%</span>
+                    {% endif %}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+
+
+            <td>{{ (item.scraped_at or item.last_updated or "N/A")[:22] }}</td>
+
+
+            <td class="json-link">
+                <a href="/prices/{{ item.product_code }}/history?days={{ days }}" target="_blank">
+                    Last {{ days }} days
+                </a>
+            </td>
+
+            <td>
+                <canvas id="spark_{{ loop.index0 }}" class="sparkline"
+                        data-product="{{ item.product_code }}"
+                        data-spark='{{ item.sparkline_data | default("null") | safe }}'></canvas>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script src="/static/chart.umd.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const canvases = document.querySelectorAll("canvas.sparkline");
+
+    canvases.forEach((canvas, idx) => {
+        const productCode = canvas.dataset.product;
+        let data = null;
+        try {
+            data = JSON.parse(canvas.dataset.spark);
+        } catch (e) {
+            data = null;
+        }
+
+        const renderChart = (series) => {
+            if (!series || !Array.isArray(series) || series.length === 0) {
+                return;
+            }
+            new Chart(canvas.getContext("2d"), {
+                type: "line",
+                data: {
+                    labels: [...Array(series.length).keys()],
+                    datasets: [{
+                        data: series,
+                        borderColor: "#0074D9",
+                        borderWidth: 1,
+                        fill: false,
+                        tension: 0.3,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { display: false } },
+                }
+            });
+        };
+
+        if (data) {
+            renderChart(data);
+            return;
+        }
+
+        // Fallback: fetch history JSON and plot prices
+        fetch(`/prices/${productCode}/history?days={{ days }}`)
+            .then((res) => res.json())
+            .then((history) => {
+                if (!Array.isArray(history) || history.length === 0) {
+                    return;
+                }
+                const series = history.map((h) => h.price);
+                renderChart(series);
+            })
+            .catch((err) => console.error("Failed to load history for", productCode, err));
+    });
+});
+</script>
+
+</body>
+</html>

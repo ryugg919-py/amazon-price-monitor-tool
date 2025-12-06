@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.pyc
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Logs & debug artifacts
+debug_html/
+*.log
+
+# Test cache
+.pytest_cache/
+.ruff_cache/
+coverage/
+htmlcov/
+
+# Tools
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Secrets & local data
+.env
+.env.*
+database.sqlite
+*.db
+# DB
+*.sqlite
+
+# Reports
+reports/*.png
+reports/*.html
+reports/*.csv
+
+# Debug outputs
+debug_html/
+logs/

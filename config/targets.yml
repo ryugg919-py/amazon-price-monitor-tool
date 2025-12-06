@@ -1,0 +1,96 @@
+settings:
+  notify:
+    min_abs_diff: 0
+    min_rate_percent: 0
+targets:
+- code: B0C1KPXPM9
+  asin: B0C1KPXPM9
+  market: amazon_us
+  enabled: true
+  name: SAMSUNG 34" ViewFinity S50GC Series Ultra-WQHD Monitor, 100Hz, 5ms, HDR10,
+    AMD FreeSync, Eye Care, Borderless Design, PIP, PBP, LS34C502GANXZA, 2023, Black
+  category: Monitors
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B0FQVC5Y99
+  asin: B0FQVC5Y99
+  market: amazon_us
+  enabled: true
+  name: 2025 12 Inch Tablet, Android 15 Tablets with Keyboard, 24GB+256GB+2TB Expand,
+    2K Display, Tablet PC with 5G WiFi, Octa-Core, 8000mAh, BT5.0, GMS, GPS, 2 in
+    1 Tablets with Case, Mouse, Stylus(Black)
+  category: Tablets
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B0FS1XM26P
+  asin: B0FS1XM26P
+  market: amazon_us
+  enabled: true
+  name: 2025 Android 15 tablet with keyboard, 26GB+256GB+2TB Expand, 10 inch 2-in-1
+    Tablets with 8-Core, 5G WiFi, 8000mAh, BT5.0, 5MP+13MP, GMS, GPS, Widevine L1,
+    Tablet PC with Mouse, Case, Stylus (Black)
+  category: Tablets
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B0F4GD28JM
+  asin: B0F4GD28JM
+  market: amazon_us
+  enabled: true
+  name: HP Chromebook 14 inch Laptop, HD Display, Intel Processor N100, 8 GB RAM,
+    128 GB UFS, Intel UHD Graphics, Chrome OS, Chalkboard Gray, 14a-nf0099nr
+  category: Laptops
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B0FF5JJ3CP
+  asin: B0FF5JJ3CP
+  market: amazon_us
+  enabled: true
+  name: Samsung Galaxy Tab S10 Lite, 6GB RAM, 128GB, 2TB Expand, Long Battery Life,
+    10.9” LCD, S Pen for Note-Taking, Exynos 1380, Circle to Search, AI Tools, Gray
+  category: Tablets
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B0DW4BY993
+  asin: B0DW4BY993
+  market: amazon_us
+  enabled: true
+  name: CyberPowerPC Gamer Xtreme VR Gaming PC, Intel Core i5-13400F 2.5GHz, GeForce
+    RTX 5060 8GB, 16GB DDR5, 1TB PCIe 4.0 SSD, WiFi Ready & Windows 11 Home (GXiVR8060A40)
+  category: Towers
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B07VJRZ62R
+  asin: B07VJRZ62R
+  market: amazon_us
+  enabled: true
+  name: Nintendo Switch with Gray Joy‑Con - HAC-001(-01)
+  category: Consoles
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B09L55CZX5
+  asin: B09L55CZX5
+  market: amazon_us
+  enabled: true
+  name: TPARTS Wireless Game Controller for Tesla Model 3/Y/S/X, Multi-Device Crystal
+    Clear Controller with 7-Colors LED Mode Special Programmed and Design For Tesla/Switch/STEAM
+    Deck/PC(1 pc)
+  category: Controllers
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B07R92KFZR
+  asin: B07R92KFZR
+  market: amazon_us
+  enabled: true
+  name: NATIONAL GEOGRAPHIC Glowing Marble Run – Construction Set with 15 Glow in
+    The Dark Glass Marbles & Storage Bag, STEM Gifts for Boys and Girls, Building
+    Project Toy (Amazon Exclusive)
+  category: Marble Runs
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B08ZSS47LP
+  asin: B08ZSS47LP
+  market: amazon_us
+  enabled: true
+  name: Marble Run Building Blocks for Kids Age 3-8, 128 Pcs STEM Building Bricks
+    Set with Toss Ring Game, Educational Learning Toys for Toddlers Boys Girls Gifts-
+    Compatible with All Major Brands
+  category: Building Sets
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'
+- code: B08P9Q29VR
+  asin: B08P9Q29VR
+  market: amazon_us
+  enabled: true
+  name: Gaming Apparel Video Game Gamer Gifts Men Boy Funny Humor T-Shirt
+  category: T-Shirts
+  selector: '#corePriceDisplay_desktop_feature_div .a-price-whole'

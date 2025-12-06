@@ -1,0 +1,8 @@
+# Runtime settings (overrides are optional; defaults are applied if missing)
+scraper:
+  force_usd: true
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+  timeout: 10
+  max_retries: 3
+  sleep_sec: 2.0
+  debug_html_dir: "debug_html"

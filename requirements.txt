@@ -1,0 +1,11 @@
+requests
+beautifulsoup4
+pandas
+pyyaml
+python-dotenv
+matplotlib
+fastapi
+uvicorn
+jinja2
+# Optional: install for Slack notifications (skip if you don't need Slack)
+slack_sdk
