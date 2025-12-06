@@ -243,7 +243,7 @@ For more detail, see:
 
 ```bash
 # 1) Clone the repo
-git clone https://github.com/ryugg919-py/amazon-price-monitor-tool.git
+git clone https://github.com/ryuhei-py/amazon-price-monitor-tool.git
 cd amazon-price-monitor-tool
 
 # 2) Create and activate a virtualenv (Windows example)
@@ -644,6 +644,6 @@ See `CONTRIBUTING.md` for guidelines on:
 
 ## author
 
-Ryu - Python & Automation Engineer
-GitHub: https://github.com/ryugg919-py
+Ryuhei - Python & Automation Engineer
+GitHub: https://github.com/ryuhei-py
 Focus: web scraping, automation, and production-grade Python tools

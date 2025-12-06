@@ -9,7 +9,7 @@ This guide describes how to get a local environment running, the quality gates w
 
 ## Setup
 1. Clone the repository:
-   git clone https://github.com/ryugg919-py/amazon-price-monitor-tool.git
+   git clone https://github.com/ryuhei-py/amazon-price-monitor-tool.git
    cd amazon-price-monitor-tool
 
 2. (Optional but recommended) create a virtual environment:

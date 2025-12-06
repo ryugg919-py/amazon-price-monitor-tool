@@ -5,7 +5,7 @@ description = "Amazon price monitoring tool with USD-first scraping, currency-aw
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
-authors = [{ name = "Ryu" }]
+authors = [{ name = "Ryuhei" }]
 
 [build-system]
 requires = ["setuptools"]
